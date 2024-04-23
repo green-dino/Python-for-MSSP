@@ -1,6 +1,10 @@
-Python Workshop: Cybersecurity and Data Analysis
+# Python Workshop: Cybersecurity and Data Analysis
 
-Welcome to the Python workshop focused on cybersecurity and data analysis! This workshop is designed to take you through a series of assignments, each building upon the previous one, gradually increasing in complexity. Through these assignments, you will cover a wide range of topics relevant to cybersecurity and data analysis using Python. This structured approach ensures that you develop a strong foundation in Python programming while gaining practical skills applicable to security-related tasks.
+> This course assumes you have python installed on your system. I reccomend following the instructions [here](https://www.python.org/downloads/) 
+
+Welcome to the Python workshop focused on cybersecurity and data analysis! This workshop is designed to take you through a series of assignments, each building upon the previous one, gradually increasing in complexity. 
+
+Through these assignments, you will cover a wide range of topics relevant to cybersecurity and data analysis using Python. This structured approach ensures that you develop a strong foundation in Python programming while gaining practical skills applicable to security-related tasks.
 
 # String Search Operations: 
 Introduces basic string manipulation and searching techniques, fundamental for text-based data analysis and parsing.
