@@ -12,7 +12,6 @@ preferred_pronouns = {names[i]: pronouns[i] for i in range(len(names))}
 
 # Print the names and their associated pronouns
 print("Pronouns:")
-# Using a nested list comprehension, you can pair each name with its corresponding pronouns without needing separate loops.
 for name, pronouns in preferred_pronouns.items():
     print("- Name: {}".format(name))
     print("  Pronouns: {}".format(pronouns))
