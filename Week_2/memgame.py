@@ -1,41 +1,33 @@
-import random
+from game_logic import generate_board, display_board, display_pair, display_questions
 
-def generate_board(questions, pairs):
-    # Shuffle the pairs and select half of them for the board
-    selected_pairs = random.sample(list(pairs.items()), len(pairs)//2)
-    board = selected_pairs + selected_pairs
-    random.shuffle(board)
-    return board
-
-
-def display_board(board):
-    for i in range(len(board)):
-        print(f"{i + 1}. {board[i][0]}")
-
-def play_game(board):
+def play_game(questions, pairs):
+    board = generate_board(pairs)
     matched_pairs = []
     attempts = 0
-    while len(matched_pairs) < len(board)//2:
+    while len(matched_pairs) < len(board) // 2:
         display_board(board)
-        print("\nEnter the numbers of two cards you want to flip (e.g., 1 2): ")
         try:
-            choice1, choice2 = map(int, input().split())
-            if choice1 < 1 or choice1 > len(board) or choice2 < 1 or choice2 > len(board) or choice1 == choice2:
-                print("Invalid input. Please enter valid numbers.")
-                continue
-            card1 = board[choice1 - 1]
-            card2 = board[choice2 - 1]
-            print(f"\n{card1[0]}: {card1[1]}")
-            print(f"{card2[0]}: {card2[1]}")
-            if card1[1] == card2[1]:
-                matched_pairs.append(card1)
-                matched_pairs.append(card2)
-                print("\nYou found a match!")
+            choice = int(input("\nEnter the number of the topic you want to select (or 0 to exit): "))
+            if choice == 0:
+                print("Exiting game...")
+                return
+            elif 1 <= choice <= len(board):
+                topic = board[choice - 1][0]
+                print("\n1. Display Pair")
+                print("2. Display Question")
+                sub_choice = int(input("Enter your choice: "))
+                if sub_choice == 1:
+                    display_pair(topic, pairs)
+                elif sub_choice == 2:
+                    display_questions(questions, topic)
+                else:
+                    print("Invalid choice. Please enter 1 or 2.")
+                input("\nPress Enter to continue...")
+                attempts += 1
             else:
-                print("\nTry again!")
-            attempts += 1
+                print("Invalid input. Please enter a valid number.")
         except ValueError:
-            print("Invalid input. Please enter valid numbers.")
+            print("Invalid input. Please enter a valid number.")
     print(f"\nCongratulations! You found all the matches in {attempts} attempts.")
 
 def main():
@@ -63,11 +55,9 @@ def main():
         "Dump Formats": ["Raw Memory Dump", "Windows Crash Dump", "Windows Hibernation File", "HPAK Format", "VM Memory"],
     }
 
-    # Generate the game board
-    board = generate_board(questions, pairs)
     print("Welcome to the Memory Game!\n")
     input("Press Enter to start the game...")
-    play_game(board)
+    play_game(questions, pairs)
 
 if __name__ == "__main__":
     main()
